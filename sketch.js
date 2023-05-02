@@ -1,33 +1,38 @@
+let period;
+let fps;
+let period_marks;
+let v1_marks;
 function setup() {
   let w = 540;
   let h = 960;
   createCanvas(w, h);
-  noFill()
+  noFill();
   smooth();
   stroke(0, 0, 0, 160);
   strokeWeight(2);
+  //set frame per second to 60
+  fps = 24;
+  frameRate(fps);
+  period = 12;
+  period_marks = [0, 20, 50, 70, 100];
+  v1_marks =     [0, 10, 80, 100, 100];
 }
-//create function that draws concentric circles at distance d from each other, starting with radius r0, and ending with radius r1, with center at x, y
-function concentricCircles(x, y, r0, r1, d) {
-  for (let r = r0; r < r1; r += d) {
-    ellipse(x, y, r, r);
-  }
-}
-
-//concentric circles that are rotated by angle a
-function rotatedConcentricCircles(x, y, e, r0, r1, d, a) {
-  push();
-  translate(x, y);
-  rotate(a);
-  concentricCircles(0, 0+e, r0, r1, d);
-  pop();
-}
-
 function draw() {
-  // let a be a value between 0 and 2PI proportional to the frameCount modulo 100
+  // let a be a value between 0 and 2PI proportional to the frameCount modulo 360
   let a = map(frameCount % 360, 0, 360, 0, TWO_PI);
-  background(255, 255, 204);
-  rotatedConcentricCircles(270, 480, 0, 50, 500, 6.9, 0);
-  rotatedConcentricCircles(270, 480, 20, 90, 459, 9.1, a);
-  rotatedConcentricCircles(270, 480, -20, 91, 461, 8.5, -a);
+  let pp = get_period_percent(period, fps, "tooth-saw");
+  let v1 =
+    400 -
+    get_value(
+      get_period_percent(period, fps, "tooth-saw"),
+      period_marks,
+      400,
+      v1_marks
+    );
+  console.log("period percent: " + floor(pp), "v1: " + floor(v1));
+  background(232, 220, 184); //aged paper color
+  rotatedConcentricCircles(270, 480, 0, 50, 500, 18, 0);
+  rotatedConcentricCircles(270, 480 - v1, 20, 90, 459, 9.1, a);
+  rotatedConcentricCircles(270, 480 + v1, -20, 91, 461, 8.5, -a);
+  //text(sec + "s", 10, 10)
 }
