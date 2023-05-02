@@ -8,13 +8,13 @@ function setup() {
   createCanvas(w, h);
   noFill();
   smooth();
-  stroke(0, 0, 0, 160);
-  strokeWeight(2);
+  stroke(0, 0, 0, 120);
+  strokeWeight(4);
   //set frame per second to 60
   fps = 24;
   frameRate(fps);
   period = 12;
-  period_marks = [0, 20, 50, 70, 100];
+  period_marks = [0, 20, 40, 70, 100];
   v1_marks =     [0, 10, 80, 100, 100];
 }
 function draw() {
@@ -31,8 +31,8 @@ function draw() {
     );
   console.log("period percent: " + floor(pp), "v1: " + floor(v1));
   background(232, 220, 184); //aged paper color
-  rotatedConcentricCircles(270, 480, 0, 50, 500, 18, 0);
-  rotatedConcentricCircles(270, 480 - v1, 20, 90, 459, 9.1, a);
-  rotatedConcentricCircles(270, 480 + v1, -20, 91, 461, 8.5, -a);
+  rotatedConcentricCircles(270, 480, 0, 50, 300, 18, 0);
+  rotatedConcentricCircles(270, 480 - v1, 20, 90, 359, 14.1, a);
+  rotatedConcentricCircles(270, 480 + v1, -20, 91, 361, 14.5, -a);
   //text(sec + "s", 10, 10)
 }
