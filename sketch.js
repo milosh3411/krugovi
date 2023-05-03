@@ -35,9 +35,9 @@ function draw() {
   background(253, 184, 19); //orange
   //rotatedConcentricCircles(270, 480, 10, 0, 40, 7, 3*a);
   stroke(0, 0, 0, 130);
-  rotatedConcentricCircles(270, 480, 10, 90, 300, 21, 3*a);
-  rotatedConcentricCircles(270, 480 - v1, 20, 90, 359, 24.1, 2*a);
-  rotatedConcentricCircles(270, 480 + v1, -20, 91, 361, 26.5, -2*a);
+  rotatedConcentricCircles(270, 480, 10, 90, 900, 21, 3*a);
+  rotatedConcentricCircles(270, 480 - v1, 20, 90, 959, 24.1, 2*a);
+  rotatedConcentricCircles(270, 480 + v1, -20, 91, 961, 26.5, -2*a);
   //stroke(0,155,214,130);
   //rotatedConcentricCircles(270, 480, 10, 400, 430, 19, -a);
   //text(sec + "s", 10, 10)   
