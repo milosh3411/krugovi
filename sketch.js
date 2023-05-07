@@ -14,8 +14,8 @@ function setup() {
   fps = 24;
   frameRate(fps);
   period = 12;
-  period_marks = [0, 20, 40, 80, 100];
-  v1_marks =     [0, 20, 70, 100, 100];
+  period_marks = [0, 20, 30, 80, 100];
+  v1_marks =     [0, 20, 50, 100, 100];
 }
 function draw() {
   // let a be a value between 0 and 2PI proportional to the frameCount modulo 360
@@ -35,9 +35,13 @@ function draw() {
   background(253, 184, 19); //orange
   //rotatedConcentricCircles(270, 480, 10, 0, 40, 7, 3*a);
   stroke(0, 0, 0, 130);
-  rotatedConcentricCircles(270, 480, 10, 90, 900, 21, 3*a);
-  rotatedConcentricCircles(270, 480 - v1, 20, 90, 959, 24.1, 2*a);
-  rotatedConcentricCircles(270, 480 + v1, -20, 91, 961, 26.5, -2*a);
+  push()
+  translate(270, 480)
+  rotate(a/2)
+  rotatedConcentricCircles(0, 0, 10, 90, 900, 21, 3*a);
+  rotatedConcentricCircles(0, 0 - v1, 20, 90, 959, 24.1, 2*a);
+  rotatedConcentricCircles(0, 0 + v1, -20, 91, 961, 26.5, -2*a);
+  pop()
   //stroke(0,155,214,130);
   //rotatedConcentricCircles(270, 480, 10, 400, 430, 19, -a);
   //text(sec + "s", 10, 10)   
